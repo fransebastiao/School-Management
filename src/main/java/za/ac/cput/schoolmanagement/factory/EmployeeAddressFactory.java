@@ -1,7 +1,7 @@
 /* Entity: EMPLOYEEADDRESS
  *(EmployeeAddressFactory)
  * SCHOOL-MANAGEMENT
- *Author: TSHEPANG MOLEFE
+ *Author: TSHEPANG MOLEFE 216217717
  *  Date: 09/06/2022
  */
 
@@ -20,10 +20,4 @@ public class EmployeeAddressFactory
 
         return new EmployeeAddress.Builder().staffId(staffId).address(address).build();
     }
-    /*public static EmployeeAddress.employeeAddress build(EmployeeAddress employeeAddress)
-    {
-        return new EmployeeAddress.employeeAddress(
-                employeeAddress.getStaffId(),
-                employeeAddress.getAddress());
-    }*/
 }

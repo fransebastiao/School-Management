@@ -1,7 +1,7 @@
 /* Entity: EMPLOYEEADDRESS
  *(EmployeeAddressRepository)
  * SCHOOL-MANAGEMENT
- *Author: TSHEPANG MOLEFE
+ *Author: TSHEPANG MOLEFE 216217717
  *  Date: 09/06/2022
  */
 
@@ -14,6 +14,5 @@ import za.ac.cput.schoolmanagement.domain.EmployeeAddress;
 
 @Repository
 public interface EmployeeAddressRepository extends JpaRepository<EmployeeAddress, String>
-{
+{ }
 
-}
