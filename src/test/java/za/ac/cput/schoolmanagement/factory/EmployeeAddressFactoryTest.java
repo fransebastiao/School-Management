@@ -9,31 +9,37 @@ package za.ac.cput.schoolmanagement.factory;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.schoolmanagement.domain.Address;
-import za.ac.cput.schoolmanagement.domain.EmployeeAddress;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeAddressFactoryTest
 {
 
+    Address khayelitsha;
 
     @Test
-    void getBuildWithSuccess(Address address)
-    {
-        EmployeeAddress employeeAddress = EmployeeAddressFactory
-                .build("0791479", address);
-        System.out.println(employeeAddress);
-        assertNotNull(employeeAddress);
-
-    }
-    @Test
-    void buildWithError( Address address)
-    {
-        Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                EmployeeAddressFactory.build("0791479", address ));
+    public void buildWithNullAddress()
+    {    Exception exception = assertThrows(IllegalArgumentException.class, () ->
+         EmployeeAddressFactory.build("0791479",null));
         String exceptionMessage = exception.getMessage();
         System.out.println(exceptionMessage);
-        //assertSame("staff Id is required",exceptionMessage);
+    }
 
+    @Test
+    public void buildWithValidStaffId()
+    {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+        EmployeeAddressFactory.build("0791479", khayelitsha));
+        String exceptionMessage = exception.getMessage();
+        System.out.println(exceptionMessage);
+    }
+
+
+    @Test
+    public void BuildWithSuccess()
+    {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+        EmployeeAddressFactory.build("0791479", khayelitsha));
+        String exceptionMessage = exception.getMessage();
+        System.out.println(exceptionMessage);
     }
 }

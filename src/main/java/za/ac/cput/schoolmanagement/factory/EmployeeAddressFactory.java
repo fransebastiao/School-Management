@@ -15,10 +15,15 @@ public class EmployeeAddressFactory
 {
     public static EmployeeAddress build(String staffId, Address address)
     {
-        HelperClass.checkStringParam("staffId", staffId);
+        HelperClass.checkStringParam("staff Id", staffId);
         HelperClass.checkIfObjectNull("address", address);
 
-        return new EmployeeAddress.Builder()
-                .staffId(staffId).address(address).build();
+        return new EmployeeAddress.Builder().staffId(staffId).address(address).build();
     }
+    /*public static EmployeeAddress.employeeAddress build(EmployeeAddress employeeAddress)
+    {
+        return new EmployeeAddress.employeeAddress(
+                employeeAddress.getStaffId(),
+                employeeAddress.getAddress());
+    }*/
 }

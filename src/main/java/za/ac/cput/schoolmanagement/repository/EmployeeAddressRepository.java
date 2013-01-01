@@ -14,4 +14,6 @@ import za.ac.cput.schoolmanagement.domain.EmployeeAddress;
 
 @Repository
 public interface EmployeeAddressRepository extends JpaRepository<EmployeeAddress, String>
-{}
+{
+
+}

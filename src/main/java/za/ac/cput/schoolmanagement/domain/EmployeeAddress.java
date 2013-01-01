@@ -73,7 +73,8 @@ public class EmployeeAddress
             return this;
         }
 
-        public EmployeeAddress build() {
+        public EmployeeAddress build()
+        {
             return new EmployeeAddress(this);
         }
 
