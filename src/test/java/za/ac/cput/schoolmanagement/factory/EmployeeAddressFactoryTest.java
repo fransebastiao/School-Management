@@ -1,6 +1,6 @@
 
 /* Entity: EMPLOYEEADDRESS
- *(EmployeeAddressRepositoryTesty)
+ * EmployeeAddressRepositoryTesty
  * SCHOOL-MANAGEMENT
  *Author: TSHEPANG MOLEFE 216217717
  *  Date: 09/06/2022
