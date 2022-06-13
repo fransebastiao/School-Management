@@ -15,10 +15,6 @@ import java.util.Objects;
 public class Student
 {
 
-    //@Id
-    //@Column(name = "Student" )
-    // @OneToOne()
-
     @NotNull @Id private  String studentid;
     @NotNull private  String studentemail,studentname;
 
