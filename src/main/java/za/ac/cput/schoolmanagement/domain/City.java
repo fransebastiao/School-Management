@@ -15,7 +15,7 @@ import java.util.Objects;
         private City(Builder builder){
             this.cityId = builder.cityId;
             this.cityName = builder.cityName;
-          //  this.country = builder.country;
+            this.country = builder.country;
         }
 
         public String getCityId(){
