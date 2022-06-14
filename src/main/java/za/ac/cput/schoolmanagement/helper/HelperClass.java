@@ -22,7 +22,6 @@ public class HelperClass {
         if (!emailValidator.isValid(s))
             throw new IllegalArgumentException("Email not valid");
     }
-
     public static void checkIfObjectNull(String objectName, Object object){ //Checks object attributes to ensure they are not null.
         if (object == null){
             throw new IllegalArgumentException(String.format("%s is null", objectName));

@@ -1,12 +1,10 @@
 /* NameFactoryTest.java
-Test for the NameFactory
+Test for NameFactory
 Author: Sharfaa Sedick Anthony 220041571
 Date: 12 June 2022 */
 
 package za.ac.cput.schoolmanagement.factory;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.schoolmanagement.domain.Name;
 

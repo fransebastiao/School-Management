@@ -1,5 +1,5 @@
 /* EmployeeFactoryTest.java
-Test for the EmployeeFactory
+Test for EmployeeFactory
 Author: Sharfaa Sedick Anthony 220041571
 Date: 12 June 2022 */
 
@@ -8,6 +8,7 @@ package za.ac.cput.schoolmanagement.factory;
 import org.junit.jupiter.api.*;
 import za.ac.cput.schoolmanagement.domain.Employee;
 import za.ac.cput.schoolmanagement.domain.Name;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
