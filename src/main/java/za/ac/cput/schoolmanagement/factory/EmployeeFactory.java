@@ -1,5 +1,5 @@
 /* EmployeeFactory.java
-Factory for the Employee
+Factory for Employee
 Author: Sharfaa Sedick Anthony 220041571
 Date: 11 June 2022 */
 

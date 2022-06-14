@@ -1,5 +1,5 @@
 /* EmployeeFactoryTest.java
-Test for the EmployeeFactory
+Test for EmployeeFactory
 Author: Sharfaa Sedick Anthony 220041571
 Date: 12 June 2022 */
 

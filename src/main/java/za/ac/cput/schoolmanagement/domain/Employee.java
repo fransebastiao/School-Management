@@ -1,5 +1,5 @@
 /* Employee.java
-Entity for the Employee
+Entity for Employee
 Author: Sharfaa Sedick Anthony 220041571
 Date: 10 June 2022 */
 

@@ -1,5 +1,5 @@
 /* Name.java
-Entity for the Name
+Entity for Name
 Author: Sharfaa Sedick Anthony 220041571
 Date: 10 June 2022 */
 

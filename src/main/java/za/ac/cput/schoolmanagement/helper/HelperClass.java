@@ -17,6 +17,7 @@ public class HelperClass {
             throw new IllegalArgumentException(String.format("Invalid value for param: %s", paramName));
     }
 
+    //Sharfaa - 220041571
     public static void checkEmail(String s){ //Method that ensures that emails are valid.
         EmailValidator emailValidator = EmailValidator.getInstance();
         if (!emailValidator.isValid(s))

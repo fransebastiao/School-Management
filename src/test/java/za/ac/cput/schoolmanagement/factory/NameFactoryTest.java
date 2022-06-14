@@ -1,5 +1,5 @@
 /* NameFactoryTest.java
-Test for the NameFactory
+Test for NameFactory
 Author: Sharfaa Sedick Anthony 220041571
 Date: 12 June 2022 */
 
