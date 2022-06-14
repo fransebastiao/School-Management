@@ -11,7 +11,7 @@ import za.ac.cput.schoolmanagement.helper.HelperClass;
 
 public class AddressFactory {
     public static Address build(String unitNumber, String complexName, String streetNumber, String streetName
-    , int postalCode, City city){
+            , int postalCode, City city){
         HelperClass.checkStringParam("streetNumber", streetNumber);
         HelperClass.checkStringParam("streetName", streetName);
         HelperClass.checkStringParam("postalCode", String.valueOf(postalCode));
