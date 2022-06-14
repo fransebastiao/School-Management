@@ -1,5 +1,5 @@
 /* EmployeeRepository.java
-Repository for Employee
+Repository for the Employee
 Author: Sharfaa Sedick Anthony 220041571
 Date: 12 June 2022 */
 

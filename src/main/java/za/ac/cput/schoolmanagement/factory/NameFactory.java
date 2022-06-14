@@ -1,5 +1,5 @@
 /* NameFactory.java
-Factory for Name
+Factory for the Name
 Author: Sharfaa Sedick Anthony 220041571
 Date: 11 June 2022 */
 
