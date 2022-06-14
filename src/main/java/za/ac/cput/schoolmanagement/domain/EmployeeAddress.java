@@ -12,7 +12,7 @@ import java.util.Objects;
 public class EmployeeAddress
 {
     private final String staffId;
-    private   Address address;
+    private  final Address address;
 
     private EmployeeAddress(Builder builder)
     {

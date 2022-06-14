@@ -13,7 +13,7 @@ import za.ac.cput.schoolmanagement.helper.HelperClass;
 
 public class EmployeeAddressFactory
 {
-    public static EmployeeAddress build(String staffId, Address address)
+    public  static  EmployeeAddress build(String staffId, Address address)
     {
         HelperClass.checkStringParam("staff Id", staffId);
         HelperClass.checkIfObjectNull("address", address);
