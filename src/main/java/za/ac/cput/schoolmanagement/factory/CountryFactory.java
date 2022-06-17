@@ -11,13 +11,10 @@ import java.util.Random;
 
 public class CountryFactory {
 
-    public static Country buildCountry(String countryName){
+    public static Country buildCountry(String countryId, String countryName){
 
-        Random random = new Random();
-        String countryId = "X" +random.nextInt(6666);
-
-        if(HelperClass.isEmptyOrNull(countryName)){
-            throw new IllegalArgumentException("countryName");
+        if(HelperClass.isEmptyOrNull(countryName) || HelperClass.isEmptyOrNull(countryName)){
+            throw new IllegalArgumentException("Country ID and/or Name cannot be null/empty!");
         }
         else{
             Country country = new Country.Builder()
