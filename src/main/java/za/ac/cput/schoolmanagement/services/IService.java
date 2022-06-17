@@ -1,11 +1,11 @@
 package za.ac.cput.schoolmanagement.services;
 
-import za.ac.cput.schoolmanagement.domain.Student;
-
+import java.util.List;
 import java.util.Optional;
 
 public interface IService<T, ID> {
     T save(T t);
-    Optional<Student> read(ID id);
+    Optional<T> read(ID id);
     void delete(T t);
+    List<T> findAll();
 }
