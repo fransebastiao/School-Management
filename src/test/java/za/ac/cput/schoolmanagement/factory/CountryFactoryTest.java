@@ -6,17 +6,21 @@ Siphelele Nyathi 218334028
 10.06.2022
  */
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.schoolmanagement.domain.Country;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CountryFactoryTest {
 
+    Country country;
+
     @Test
     @DisplayName("Should build country with success")
+    @Order(3)
     public void buildWithSuccess(){
 
-        Country country = CountryFactory.buildCountry( "Jamaica");
+        country = CountryFactory.buildCountry( "X6596", "Jamaica");
         assertNotNull(country);
 
         System.out.println(country);
@@ -24,10 +28,22 @@ class CountryFactoryTest {
     }
 
     @Test
-    @DisplayName("Should return an error, must include name of the country to return object ")
+    @DisplayName("Should return an error, must include ID of the country to return object ")
+    @Order(1)
     public void buildWithFailure(){
 
-        Country country = CountryFactory.buildCountry( "");
+        country = CountryFactory.buildCountry( "", "Jamaica");
+
+        assertEquals(null, country);
+        System.out.println(country);
+    }
+
+    @Test
+    @DisplayName("Should return an error, Country objects cannot be null or empty ")
+    @Order(2)
+    public void buildWithEmptyObjects(){
+
+        country = CountryFactory.buildCountry( "", null);
 
         assertEquals(null, country);
         System.out.println(country);

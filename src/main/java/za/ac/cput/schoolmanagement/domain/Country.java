@@ -6,10 +6,21 @@ Siphelele Nyathi 218334028
 10.06.2022
  */
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class Country {
 
-    private String countryId;
-    private String countryName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull @Id private String countryId;
+    @NotNull private String countryName;
+
+    protected Country() {
+    }
 
     public Country(Builder builder) {
         this.countryId = builder.countryId;
@@ -35,8 +46,8 @@ public class Country {
     @Override
     public String toString() {
         return "Country{" +
-                "countryId='" + countryId + '\'' +
-                ", countryName='" + countryName + '\'' +
+                " ID ='" + countryId + '\'' +
+                ", Name ='" + countryName + '\'' +
                 '}';
     }
 
@@ -53,6 +64,12 @@ public class Country {
 
         public Builder setCountryName(String countryName) {
             this.countryName = countryName;
+            return this;
+        }
+
+        public Builder copy(Country country){
+            this.countryId = country.countryId;
+            this.countryName = country.countryName;
             return this;
         }
 
