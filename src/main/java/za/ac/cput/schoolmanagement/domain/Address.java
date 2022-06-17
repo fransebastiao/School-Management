@@ -7,11 +7,16 @@ package za.ac.cput.schoolmanagement.domain;
  */
 
 import java.util.Objects;
+import javax.persistence.Embeddable;
+import java.io.Serializable;
 
-public class Address {
+@Embeddable
+public class Address implements Serializable{
     private String unitNumber, complexName, streetNumber, streetName;
     private int postalCode;
     private City city;
+
+    public Address() {}
 
     private Address(Builder builder) {
         this.unitNumber = builder.unitNumber;
