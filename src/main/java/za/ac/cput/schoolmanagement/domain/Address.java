@@ -6,14 +6,20 @@ package za.ac.cput.schoolmanagement.domain;
  * Date: 14/06/2022
  */
 
+import com.sun.istack.NotNull;
+
 import java.util.Objects;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
 public class Address implements Serializable{
-    private String unitNumber, complexName, streetNumber, streetName;
+    private String unitNumber, complexName;
+    @NotNull
+    private String streetNumber, streetName;
+    @NotNull
     private int postalCode;
+    @NotNull
     private City city;
 
     public Address() {}
