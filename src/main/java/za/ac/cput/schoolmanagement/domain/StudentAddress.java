@@ -6,17 +6,20 @@ package za.ac.cput.schoolmanagement.domain;
  Date: 11 June 2022
 */
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class StudentAddress {
+public class StudentAddress implements Serializable {
 
 
-    @Id @NotNull private String studentAddressid;
-    @NotNull private String studentAddress;
+    @Id
+    private static String studentAddressid;
+    @Embedded
+    private Address studentAddress;
 
 
     protected StudentAddress() {}
@@ -28,11 +31,11 @@ public class StudentAddress {
     }
 
 
-    public String getstudentAddressid() {
+    public static String getstudentAddressid() {
         return studentAddressid;
     }
 
-    public String getstudentAddress() {
+    public Address getstudentAddress() {
         return studentAddress;
     }
 
@@ -47,21 +50,21 @@ public class StudentAddress {
     public static class Builder{
 
         private String studentAddressid;
-        private String studentAddress;
+        private Address studentAddress;
 
         public Builder studentAddressid(String studentAdressid) {
             this.studentAddressid = studentAdressid;
             return this;
         }
 
-        public Builder studentAddress(String studentAdress) {
+        public Builder studentAddress(Address studentAdress) {
             this.studentAddress = studentAdress;
             return this;
         }
 
         public Builder copy(StudentAddress student) {
             this.studentAddressid = student.studentAddressid;
-            this.studentAddress=student.studentAddress;
+            this.studentAddress=studentAddress;
             return this;
         }
 
@@ -82,6 +85,7 @@ public class StudentAddress {
     public int hashCode() {
         return Objects.hash(studentAddressid,studentAddress);
     }
+
 
 
     /* //my identifyer
