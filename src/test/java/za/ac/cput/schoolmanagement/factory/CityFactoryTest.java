@@ -10,12 +10,14 @@ class CityFactoryTest {
     @Test
     public void BuildWithSucess() {
 
-        City city = CityFactory.build("2", "3");
+        City city = CityFactory.build("7925", "CapeTown");
         System.out.println(city);
         assertNotNull(city);
     }
 
     @Test
-    void buildId() {
+    void buildWithFailure() {
+        
+
     }
 }
