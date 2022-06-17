@@ -6,19 +6,24 @@ package za.ac.cput.schoolmanagement.domain;
  Date: 11 June 2022
 */
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Student
+public class Student implements Serializable
 {
 
-    @NotNull @Id private  String studentid;
-    @NotNull private  String studentemail,studentname;
+    @Id
+    private static String studentid;
+    private  String studentemail;
+    @Embedded
+    private  Name studentname;
 
-    protected Student(){}
+
+    public Student(){}
 
     public Student(Builder builder)
     {
@@ -27,7 +32,7 @@ public class Student
         this.studentname = builder.studentname;
     }
 
-    public String getStudentid() {
+    public  String getStudentid() {
         return studentid;
     }
 
@@ -35,14 +40,14 @@ public class Student
         return studentemail;
     }
 
-    public String getStudentname() {
+    public Name getStudentname() {
         return studentname;
     }
 
     public static class Builder{
 
         private String studentid,studentemail;
-        private String studentname;
+        private Name studentname;
 
         public Builder studentid(String studentid) {
             this.studentid = studentid;
@@ -54,7 +59,7 @@ public class Student
             return this;
         }
 
-        public Builder studentname(String studentname) {
+        public Builder studentname(Name studentname) {
             this.studentname = studentname;
             return this;
         }

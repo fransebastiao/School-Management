@@ -1,5 +1,6 @@
 package za.ac.cput.schoolmanagement.factory;
 
+import za.ac.cput.schoolmanagement.domain.Name;
 import za.ac.cput.schoolmanagement.domain.Student;
 import za.ac.cput.schoolmanagement.helper.HelperClass;
 
@@ -11,11 +12,12 @@ import za.ac.cput.schoolmanagement.helper.HelperClass;
 */
 public class StudentFactory
 {
-    public static Student createStudent(String studentid, String studentemail, String studentname)
+    public static Student createStudent(String studentid, String studentemail, Name studentname)
     {
-        if (HelperClass.isEmptyOrNull(studentid) || HelperClass.isEmptyOrNull(studentemail)
-                || HelperClass.isEmptyOrNull(String.valueOf(studentname)))
-            return null;
+        HelperClass.checkStringParam("StudentId", studentid);
+        HelperClass.checkStringParam("Email", studentemail);
+        HelperClass.checkEmail(studentemail);
+        HelperClass.checkIfObjectNull("Name",studentname);
 
         return new Student.Builder()
                 .studentid(studentid)
