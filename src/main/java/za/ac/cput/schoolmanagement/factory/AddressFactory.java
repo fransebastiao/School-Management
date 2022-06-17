@@ -16,7 +16,7 @@ public class AddressFactory {
         HelperClass.checkStringParam("streetNumber", streetNumber);
         HelperClass.checkStringParam("streetName", streetName);
         HelperClass.checkStringParam("postalCode", String.valueOf(postalCode));
-        HelperClass.checkStringParam("city", String.valueOf(city));
+        HelperClass.checkIfObjectNull("city", city);
         unitNumber = HelperClass.setEmptyIfNull(unitNumber);
         complexName = HelperClass.setEmptyIfNull(complexName);
 

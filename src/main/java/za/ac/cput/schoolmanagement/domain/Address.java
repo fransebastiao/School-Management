@@ -22,7 +22,7 @@ public class Address implements Serializable{
     @NotNull
     private City city;
 
-    public Address() {}
+    private Address() {}
 
     private Address(Builder builder) {
         this.unitNumber = builder.unitNumber;
