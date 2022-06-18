@@ -50,8 +50,4 @@ public class StudentAddressServiceImpl implements StudentAddressService {
         }
     }
 
-    @Override
-    public void deleteUsingId(String id) {
-
-    }
 }
