@@ -5,88 +5,54 @@ package za.ac.cput.schoolmanagement.services.StudentService;
  Author: Edvalter da Costa Jamba (220446571)
  Date: 16 June 2022
 */
-import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.schoolmanagement.domain.Address;
-import za.ac.cput.schoolmanagement.domain.StudentAddress;
-import za.ac.cput.schoolmanagement.factory.AddressFactory;
-import za.ac.cput.schoolmanagement.factory.StudentAddressFactory;
-
+import za.ac.cput.schoolmanagement.domain.*;
+import za.ac.cput.schoolmanagement.factory.*;
+import za.ac.cput.schoolmanagement.services.StudentService.StudentAddressService;
 import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudentAddressServiceImplTest {
 
-    private final Address address = AddressFactory.build("12A","JHG","12b","alexender",1,null);
-    private final StudentAddress studentAddress = StudentAddressFactory.createStudentAddress("12",address);
+    private final Country country = CountryFactory.build("01", "gh");
+    private final City city = CityFactory.build("01", "gh", country);
+    private final Address address = AddressFactory.build("20",
+            "one","02", "TWO","00", city);
+    private final StudentAddress studentAddress = StudentAddressFactory.build("22", address);
 
     @Autowired
-    private StudentAddressService studentaddressService;
+    private StudentAddressService studentAddressService;
 
-
+    @Order(1)
     @Test
-    void A_save() {
-        StudentAddress saved = this.studentaddressService.save(this.studentAddress);
+    void save(){
+        StudentAddress saved = this.studentAddressService.save(this.studentAddress);
         assertEquals(this.studentAddress, saved);
         System.out.println(saved);
     }
-
+    @Order(2)
     @Test
-    void B_read()
-    {
-        Optional<StudentAddress> read = this.studentaddressService.read(this.studentAddress.getstudentAddressid());
-        assertAll(()-> assertTrue(read.isPresent()),()-> assertEquals(this.studentAddress,read.get()));
+    void read(){
+        Optional<StudentAddress> read = this.studentAddressService.read(this.studentAddress.getStudentId());
+        assertAll(
+                ()-> assertTrue(read.isPresent()),
+                ()-> assertEquals(this.studentAddress,read.get())
+        );
     }
-
+    @Order(3)
     @Test
-    void C_delete() {
-
-        this.studentaddressService.deleteUsingId(this.studentAddress.getstudentAddressid());
-        List<StudentAddress> showStudents = this.studentaddressService.findAll();
-        assertEquals(0,showStudents.size());
+    void findAll(){
+        List<StudentAddress> studentAddressList = this.studentAddressService.findAll();
+        assertEquals(1,studentAddressList.size());
     }
-
+    @Order(4)
     @Test
-    void D_findAll() {
-        List<StudentAddress> showStudents = this.studentaddressService.findAll();
-        assertEquals(1,showStudents.size());
+    void delete(){
+        this.studentAddressService.deleteById(this.studentAddress.getStudentId());
+        List<StudentAddress> studentAddressList = this.studentAddressService.findAll();
+        assertEquals(0,studentAddressList.size());
     }
-
-
-
-/*
-    @Mock
-    private StudentRepository studentRepository;
-
-    StudentService studentService;
-
-    @BeforeEach
-    void initUseCase() {
-        studentService = new StudentServiceImpl(studentRepository);
-    }
-
-    @Test
-    public void save() {
-        Student student = new Student();
-        student.getStudentname();
-        student.getStudentid();
-        student.getStudentname();
-        when(StudentRepository.save(any(Student.class))).thenReturn(new student);
-
-        Student saved = StudentRepository.save(student);
-        assertThat(saved.getStudentname()).isNotNull();
-    }
-
-    private ArgumentMatchers assertThat(String studentname) {
-        return null;
-    }
-    */
-
 }

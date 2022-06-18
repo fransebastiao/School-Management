@@ -10,19 +10,17 @@ import za.ac.cput.schoolmanagement.helper.HelperClass;
  Author: Edvalter da Costa Jamba (220446571)
  Date: 11 June 2022
 */
+
+
 public class StudentAddressFactory {
-
-
-    public static StudentAddress createStudentAddress(String studentAdressid, Address studentAdress)
-    {
-        HelperClass.checkStringParam("StudentId", studentAdressid);
-        HelperClass.checkStringParam("Address", String.valueOf(studentAdress));
+    public static StudentAddress build(String studentId, Address address) throws IllegalArgumentException{
+        HelperClass.checkStringParam("studentId", studentId);
+        HelperClass.checkIfObjectNull("address", address);
         return new StudentAddress.Builder()
-                .studentAddressid(studentAdressid)
+                .setStudentId(studentId)
+                .setAddress(address)
                 .build();
-
     }
-
 
 }
 

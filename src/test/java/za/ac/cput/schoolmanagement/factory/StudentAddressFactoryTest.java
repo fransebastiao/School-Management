@@ -7,20 +7,37 @@ package za.ac.cput.schoolmanagement.factory;
 */
 import org.junit.jupiter.api.Test;
 import za.ac.cput.schoolmanagement.domain.Address;
-import za.ac.cput.schoolmanagement.domain.Student;
 import za.ac.cput.schoolmanagement.domain.StudentAddress;
-
 import static org.junit.jupiter.api.Assertions.*;
+import za.ac.cput.schoolmanagement.domain.City;
+import za.ac.cput.schoolmanagement.domain.Country;
 
 class StudentAddressFactoryTest {
-Address address= AddressFactory.build("12A","JHG","12b","alexender",1,null);
 
     @Test
-    void createStudentAddress() {
+    void buildWithSuccess() throws IllegalArgumentException{
+        Country country = CountryFactory.build("gsd1", "South Africa");
+        City city = CityFactory.build("cty", "Cape Town", country);
+        Address address = AddressFactory.build("201","Johns", "48", "Label Street", "1241", city);
 
-        StudentAddress student=StudentAddressFactory.createStudentAddress("1",address);
-        System.out.println(student.toString());
-        assertNotNull(student);
+        StudentAddress studentAddress = StudentAddressFactory
+                .build("fghj", address);
+        System.out.println(studentAddress);
+        assertNotNull(studentAddress);
+    }
 
+    @Test
+    void buildWithError() {
+        Country country = CountryFactory.build("gsd1", "South Africa");
+        City city = CityFactory.build("cty", "Cape Town", country);
+        Address address = AddressFactory.build("201","Johns", "48", "Label Street", "1241", city);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                StudentAddressFactory
+                        .build(null, address));
+
+        String exceptionMessage = exception.getMessage();
+        System.out.println(exceptionMessage);
+        assertSame("Student id is required!", exceptionMessage);
     }
 }

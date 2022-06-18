@@ -1,30 +1,47 @@
-package za.ac.cput.schoolmanagement.domain;
-
 /* Project: School Management
  * Entity: Address
  * Author: Franciel Sebastiao 219466912
  * Date: 14/06/2022
  */
+package za.ac.cput.schoolmanagement.domain;
 
-import com.sun.istack.NotNull;
-
-import java.util.Objects;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import javax.persistence.Embeddable;
-import java.io.Serializable;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
 
 @Embeddable
-public class Address implements Serializable{
-    private String unitNumber, complexName;
-    @NotNull
-    private String streetNumber, streetName;
-    @NotNull
-    private int postalCode;
-    @NotNull
+public class Address {
+
+    @NotBlank(message = "Unit Number is mandatory")
+    private String unitNumber;
+
+    @NotBlank(message = "Complex is mandatory") //Not everyone stays in a complex.
+    private String complexName;
+
+    @NotBlank(message = "Street Number is mandatory")
+    private String streetNumber;
+
+    @NotBlank(message = "Complex Name is mandatory")
+    private String streetName;
+
+    @NotBlank(message = "Postal Code is mandatory")
+    private String postalCode;
+
+    @NotNull(message = "City is mandatory")
+    @ManyToOne(cascade = { PERSIST, MERGE })
+    @NotFound(action = NotFoundAction.IGNORE)
     private City city;
 
-    private Address() {}
+    protected Address(){ }
 
-    private Address(Builder builder) {
+    private Address(Builder builder)
+    {
         this.unitNumber = builder.unitNumber;
         this.complexName = builder.complexName;
         this.streetNumber = builder.streetNumber;
@@ -33,92 +50,153 @@ public class Address implements Serializable{
         this.city = builder.city;
     }
 
-    public String getUnitNumber() {return unitNumber;}
+    public String getUnitNumber()
+    {
+        return unitNumber;
+    }
 
-    public String getComplexName() {return complexName;}
+    public String getComplexName()
+    {
+        return complexName;
+    }
 
-    public String getStreetNumber() {return streetNumber;}
+    public String getStreetNumber()
+    {
+        return streetNumber;
+    }
 
-    public String getStreetName() {return streetName;}
+    public String getStreetName()
+    {
+        return streetName;
+    }
 
-    public int getPostalCode() {return postalCode;}
+    public String getPostalCode()
+    {
+        return postalCode;
+    }
 
-    public City getCity() {return city;}
+    public City getCity()
+    {
+        return city;
+    }
 
-    public static class Builder {
-        private String unitNumber, complexName, streetNumber, streetName;
-        private int postalCode;
-        private City city;
+    private void setUnitNumber(String unitNumber)
+    {
+        this.unitNumber = unitNumber;
+    }
 
-        public Builder unitNumber(String unitNumber) {
-            this.unitNumber = unitNumber;
-            return this;
-        }
+    private void setComplexName(String complexName)
+    {
+        this.complexName = complexName;
+    }
 
-        public Builder complexName(String complexName) {
-            this.complexName = complexName;
-            return this;
-        }
+    private void setStreetNumber(String streetNumber)
+    {
+        this.streetNumber = streetNumber;
+    }
 
-        public Builder streetNumber(String streetNumber) {
-            this.streetNumber = streetNumber;
-            return this;
-        }
+    private void setStreetName(String streetName)
+    {
+        this.streetName = streetName;
+    }
 
-        public Builder streetName(String streetName) {
-            this.streetName = streetName;
-            return this;
-        }
+    private void setPostalCode(String postalCode)
+    {
+        this.postalCode = postalCode;
+    }
 
-        public Builder postalCode(int postalCode) {
-            this.postalCode = postalCode;
-            return this;
-        }
-
-        public Builder city(City city) {
-            this.city = city;
-            return this;
-        }
-
-        public Builder copy(Address address) {
-            this.unitNumber = unitNumber;
-            this.complexName = complexName;
-            this.streetNumber = streetNumber;
-            this.streetName = streetName;
-            this.postalCode = postalCode;
-            this.city = city;
-            return this;
-        }
-
-        public Address build(){return new Address(this);}
+    private void setCity(City city)
+    {
+        this.city = city;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return postalCode == address.postalCode && Objects.equals(unitNumber, address.unitNumber)
-                && Objects.equals(complexName, address.complexName) &&
-                Objects.equals(streetNumber, address.streetNumber)
-                && Objects.equals(streetName, address.streetName)
-                && Objects.equals(city, address.city);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(unitNumber, complexName, streetNumber, streetName, postalCode, city);
-    }
-
-    @Override
-    public String toString() {
+    public String toString()
+    {
         return "Address{" +
                 "unitNumber='" + unitNumber + '\'' +
                 ", complexName='" + complexName + '\'' +
                 ", streetNumber='" + streetNumber + '\'' +
                 ", streetName='" + streetName + '\'' +
-                ", postalCode=" + postalCode + '\'' +
+                ", postalCode='" + postalCode + '\'' +
                 ", city=" + city +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return getUnitNumber().equals(address.getUnitNumber()) && getComplexName().equals(address.getComplexName()) && getStreetNumber().equals(address.getStreetNumber()) && getStreetName().equals(address.getStreetName()) && getPostalCode().equals(address.getPostalCode()) && getCity().equals(address.getCity());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(getUnitNumber(), getComplexName(), getStreetNumber(), getStreetName(), getPostalCode(), getCity());
+    }
+
+    public static class Builder
+    {
+        private String unitNumber;
+        private String complexName;
+        private String streetNumber;
+        private String streetName;
+        private String postalCode;
+        private City city;
+
+        public Builder setUnitNumber(String unitNumber)
+        {
+            this.unitNumber = unitNumber;
+            return this;
+        }
+
+        public Builder setComplexName(String complexName)
+        {
+            this.complexName = complexName;
+            return this;
+        }
+
+        public Builder setStreetNumber(String streetNumber)
+        {
+            this.streetNumber = streetNumber;
+            return this;
+        }
+
+        public Builder setStreetName(String streetName)
+        {
+            this.streetName = streetName;
+            return this;
+        }
+
+        public Builder setPostalCode(String postalCode)
+        {
+            this.postalCode = postalCode;
+            return this;
+        }
+
+        public Builder setCity(City city)
+        {
+            this.city = city;
+            return this;
+        }
+
+        public Builder copy(Address address)
+        {
+            this.unitNumber = address.unitNumber;
+            this.complexName = address.complexName;
+            this.streetNumber = address.streetNumber;
+            this.streetName = address.streetName;
+            this.postalCode = address.postalCode;
+            this.city = address.city;
+            return this;
+        }
+
+        public Address build()
+        {
+            return new Address(this);
+        }
     }
 }

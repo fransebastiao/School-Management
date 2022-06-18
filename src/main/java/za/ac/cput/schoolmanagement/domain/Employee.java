@@ -4,7 +4,7 @@ Author: Sharfaa Sedick Anthony 220041571
 Date: 10 June 2022 */
 /* Employee.java
 Entity for the Employee
-Author: Jody Kearns (209023651)
+Author: Sharfaa Sedick Anthony 220041571
 Date: 10 June 2022 */
 
 package za.ac.cput.schoolmanagement.domain;
