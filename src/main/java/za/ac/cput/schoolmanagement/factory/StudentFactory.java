@@ -12,18 +12,16 @@ import za.ac.cput.schoolmanagement.helper.HelperClass;
 */
 public class StudentFactory
 {
-    public static Student createStudent(String studentid, String studentemail, Name studentname)
+    public static Student build(String studentId, String email, Name name)
     {
-        HelperClass.checkStringParam("StudentId", studentid);
-        HelperClass.checkStringParam("Email", studentemail);
-        HelperClass.checkEmail(studentemail);
-        HelperClass.checkIfObjectNull("Name",studentname);
+        HelperClass.checkIfObjectNull("Name", name);
+        HelperClass.checkEmail(email);
 
         return new Student.Builder()
-                .studentid(studentid)
-                .studentemail(studentemail)
-                .studentname(studentname)
+                .setStudentId(studentId)
+                .setEmail(email)
+                .setName(name)
                 .build();
-
     }
+
 }

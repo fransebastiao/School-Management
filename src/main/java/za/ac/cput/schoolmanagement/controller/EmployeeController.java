@@ -4,17 +4,18 @@ Author: Sharfaa Sedick Anthony 220041571
 Date: 15 June 2022 */
 
 package za.ac.cput.schoolmanagement.controller;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import za.ac.cput.schoolmanagement.api.EmployeeAPI;
 import za.ac.cput.schoolmanagement.domain.Employee;
 import za.ac.cput.schoolmanagement.domain.Name;
 import za.ac.cput.schoolmanagement.factory.EmployeeFactory;
 import za.ac.cput.schoolmanagement.factory.NameFactory;
+import za.ac.cput.schoolmanagement.helper.HelperClass;
 import za.ac.cput.schoolmanagement.services.employeeService.IEmployeeService;
 import java.util.List;
 
@@ -24,12 +25,15 @@ import java.util.List;
 public class EmployeeController {
 
     private final IEmployeeService employeeService;
+    private final EmployeeAPI employeeAPI;
 
     @Autowired
-    public EmployeeController(IEmployeeService employeeService){
+    public EmployeeController(IEmployeeService employeeService, EmployeeAPI employeeAPI){
         this.employeeService = employeeService;
+        this.employeeAPI = employeeAPI;
     }
 
+    @PostMapping("save")
     public ResponseEntity<Employee> save(@RequestBody Employee employee){
         log.info("Save request: {}", employee);
         Name validatedName;
@@ -66,5 +70,33 @@ public class EmployeeController {
     public ResponseEntity<List<Employee>> findAll(){
         List<Employee> employeeList = this.employeeService.findAll();
         return ResponseEntity.ok(employeeList);
+    }
+
+    //Question 5:
+    @GetMapping("read-by-email/{email}")
+    public ResponseEntity<Name> findByEmail(@PathVariable String email){
+        log.info("Read name by email request: {}", email);
+        try{
+            HelperClass.checkEmail(email);
+        }catch(IllegalArgumentException e){
+            log.info("Find name by email request error: {}", e.getMessage());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        Employee employee = this.employeeService.findByEmail(email)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return ResponseEntity.ok(employee.getName());
+    }
+
+    //Question 6:
+    @GetMapping("read-employee-name-by-city-id/{cityId}")
+    public ResponseEntity<List<Name>> findEmpByCity(@PathVariable String cityId){
+        List<Name> employeeNamesList = null;
+        try{
+            log.info("Read employee name by city id request: {}", cityId);
+            employeeNamesList = employeeAPI.findEmployeesInCity(cityId);
+        }catch(ResponseStatusException e){
+            throw e;//new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(employeeNamesList);
     }
 }

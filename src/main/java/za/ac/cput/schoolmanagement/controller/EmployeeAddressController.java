@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.schoolmanagement.domain.EmployeeAddress;
 import za.ac.cput.schoolmanagement.factory.EmployeeAddressFactory;
-import za.ac.cput.schoolmanagement.services.IEmployeeAddressService;
+import za.ac.cput.schoolmanagement.services.impl.IEmployeeAddressService;
 import java.util.List;
 
 @RestController

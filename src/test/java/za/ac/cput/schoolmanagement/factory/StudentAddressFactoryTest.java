@@ -16,9 +16,9 @@ class StudentAddressFactoryTest {
 
     @Test
     void buildWithSuccess() throws IllegalArgumentException{
-        Country country = CountryFactory.build("gsd1", "South Africa");
-        City city = CityFactory.build("cty", "Cape Town", country);
-        Address address = AddressFactory.build("201","Johns", "48", "Label Street", "1241", city);
+        Country country = CountryFactory.build("yui8", "South Africa");
+        City city = CityFactory.build("coy", "Cape Town", country);
+        Address address = AddressFactory.build("201","Levo", "12", "Gross Road", "1331", city);
 
         StudentAddress studentAddress = StudentAddressFactory
                 .build("fghj", address);
@@ -28,9 +28,9 @@ class StudentAddressFactoryTest {
 
     @Test
     void buildWithError() {
-        Country country = CountryFactory.build("gsd1", "South Africa");
-        City city = CityFactory.build("cty", "Cape Town", country);
-        Address address = AddressFactory.build("201","Johns", "48", "Label Street", "1241", city);
+        Country country = CountryFactory.build("yui1", "South Africa");
+        City city = CityFactory.build("coy", "Cape Town", country);
+        Address address = AddressFactory.build("201","Levo", "12", "Gross Roadt", "1331", city);
 
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 StudentAddressFactory
@@ -38,6 +38,6 @@ class StudentAddressFactoryTest {
 
         String exceptionMessage = exception.getMessage();
         System.out.println(exceptionMessage);
-        assertSame("Student id is required!", exceptionMessage);
+        assertSame("Student id is required.", exceptionMessage);
     }
 }

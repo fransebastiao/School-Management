@@ -2,28 +2,30 @@ package za.ac.cput.schoolmanagement.factory;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.schoolmanagement.domain.City;
-import za.ac.cput.schoolmanagement.domain.Country;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CityFactoryTest {
 
-    private City city;
-    Country SA;
-
     @Test
-    public void BuildWithSucess() {
+    void createCity(){
+        City cityCreated = CityFactory.build("012345","Cape Town", CountryFactory.build( "South African","Namibia"));
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () ->
-        CityFactory.build("7925", "CapeTown", SA));
-        String exceptionMessage = exception.getMessage();
-        System.out.println(city);
-        assertNotNull(city);
+        assertAll(
+                ()-> assertTrue(cityCreated.getName().isEmpty()),
+                ()-> assertTrue(cityCreated.getId().isEmpty()),
+                ()-> assertNotNull(cityCreated.getCountry())
+        );
+        City city = CityFactory.build("012345","Cape Town", CountryFactory.build("1CNTY1","South Africa"));
+        assertNotNull(cityCreated);
+        System.out.println(cityCreated);
+
+
     }
 
     @Test
-    void buildWithFailure() {
-        
-
+    public void completedValues(){
+        City city = CityFactory.build("012345","Mpumalanga",CountryFactory.build("South African","South America"));
+        System.out.println(city);
+        assertNotNull(city);
     }
 }

@@ -1,118 +1,81 @@
 package za.ac.cput.schoolmanagement.domain;
 /*Lihle Langa 217181147
 */
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+import javax.persistence.*;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
 
 @Entity
 public class City {
+    @Id
+    private String id;
 
-         @Id
-         @NotNull
-         private  String cityId;
+    private String name;
 
-        private String cityName;
-    @Embedded
-       private Country country;
+    @ManyToOne(cascade = { PERSIST, MERGE })
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Country country;
 
-protected City(){}
-        private City(Builder builder){
-            this.cityId = builder.cityId;
-            this.cityName = builder.cityName;
-            this.country = builder.country;
-        }
+    public City(){}
 
-        public String getCityId(){
-            return cityId;
-        }
-        public String getCityName(){
-            return cityName;
-        }
-        public Country getCountry(){return country;}
-
-
-        @Override
-        public String toString(){
-
-            return "City{" + "CityId : " + cityId + "cityName : " + cityName +  "Country : " +country +"}";
-        }
-        @Override
-        public boolean equals(Object o) {
-            if (this.equals(o)) return true;
-            if (o.equals("") || getClass() != o.getClass()) return false;
-            za.ac.cput.schoolmanagement.domain.City city = (za.ac.cput.schoolmanagement.domain.City) o;
-            return cityId.equals(city.cityId);
-        }
-
-
-        public static class Builder{
-            private String cityId, cityName;
-            private Country country;
-
-            public Builder cityId(String cityId){
-                this.cityId = cityId;
-                return this;
-            }
-
-            public Builder cityName(String cityName) {
-                this.cityName = cityName;
-                return this;
-            }
-            public Builder Country(Country country){
-                this.country = country;
-                return this;
-            }
-
-            public Builder copy(za.ac.cput.schoolmanagement.domain.City city) {
-                this.cityId = city.cityId;
-                this.cityName = city.cityName;
-                this.country = city.country;
-                return this;
-            }
-
-            public za.ac.cput.schoolmanagement.domain.City build() {
-                return new za.ac.cput.schoolmanagement.domain.City(this);
-            }
-
-        }
-
-        public static class city{
-
-            private final String cityId;
-            private final  String cityName;
-            private Country country;
-
-            public city(String cityId, String cityName, Country country){
-                this.cityId = cityId;
-                this.cityName = cityName;
-                this.country = this.country;
-            }
-            public String getCityId(){
-                return cityId;
-            }
-            public String getCityName(){
-                return cityName;
-            }
-
-            public Country getCountry() {
-                return country;
-            }
-
-            @Override
-            public boolean equals(Object o) {
-                if (this.equals(o)) return true;
-                if (o.equals("") || getClass() != o.getClass()) return false;
-                za.ac.cput.schoolmanagement.domain.City city = (za.ac.cput.schoolmanagement.domain.City) o;
-                return cityId.equals(city.cityId);
-            }
-
-
-
-        }
-
-
+    private City(Builder builder)
+    {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.country = builder.country;
     }
 
+    public String getId()
+    {
+        return id;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public Country getCountry()
+    {
+        return country;
+    }
+
+    public static class Builder {
+        private String id;
+        private String name;
+        private Country country;
+
+        public Builder setId(String id)
+        {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setName(String name)
+        {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setCountry(Country country)
+        {
+            this.country = country;
+            return this;
+        }
+
+        @Override
+        public String toString()
+        {
+            return "Builder{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", country=" + country + '}';
+        }
+
+        public City build()
+        {
+            return new City(this);
+        }
+
+    }
+}
