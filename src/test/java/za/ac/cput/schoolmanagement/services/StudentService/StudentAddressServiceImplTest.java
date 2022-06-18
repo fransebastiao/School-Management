@@ -5,12 +5,9 @@ package za.ac.cput.schoolmanagement.services.StudentService;
  Author: Edvalter da Costa Jamba (220446571)
  Date: 16 June 2022
 */
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.mockito.ArgumentMatchers;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.schoolmanagement.domain.Address;

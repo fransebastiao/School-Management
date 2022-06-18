@@ -1,12 +1,10 @@
+package za.ac.cput.schoolmanagement.services.StudentService;
 /*
  School_Management
  StudentService
  Author: Edvalter da Costa Jamba (220446571)
  Date: 16 June 2022
 */
-
-package za.ac.cput.schoolmanagement.services.StudentService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.schoolmanagement.domain.Student;
