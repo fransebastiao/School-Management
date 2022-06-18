@@ -14,6 +14,4 @@ import java.util.Optional;
 
 @Repository
 public interface AddressRepository extends JpaRepository<Address, String>{
-    void deleteByStreetNumber(String streetNumber);
-    Optional<Address> findByStreetNumber(String s);
 }
