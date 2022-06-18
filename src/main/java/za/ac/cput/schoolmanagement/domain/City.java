@@ -14,11 +14,8 @@ public class City {
          @NotNull
          private  String cityId;
 
-
-         @NotNull
-         @Embedded
         private String cityName;
-
+    @Embedded
        private Country country;
 
 protected City(){}
