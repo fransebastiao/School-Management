@@ -30,7 +30,6 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @PostMapping("save")
     public ResponseEntity<Employee> save(@RequestBody Employee employee){
         log.info("Save request: {}", employee);
         Name validatedName;

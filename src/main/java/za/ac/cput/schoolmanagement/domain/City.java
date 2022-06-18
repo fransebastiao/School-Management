@@ -1,17 +1,27 @@
 package za.ac.cput.schoolmanagement.domain;
 /*Lihle Langa 217181147
 */
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 
-import java.util.Objects;
+@Entity
+public class City {
 
-    public class City {
+         @Id
+         @NotNull
+         private  String cityId;
 
-        private final String cityId;
-        private final String cityName;
+
+         @NotNull
+         @Embedded
+        private String cityName;
+
        private Country country;
 
-
+protected City(){}
         private City(Builder builder){
             this.cityId = builder.cityId;
             this.cityName = builder.cityName;
