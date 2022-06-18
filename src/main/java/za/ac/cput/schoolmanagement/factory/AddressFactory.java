@@ -59,6 +59,9 @@ public class AddressFactory {
         if(count > 0)
             throw new IllegalArgumentException("Invalid postal code, " + "'" + getFieldName() + "'" + " contains: " + count + " invalid characters");
     }
+        unitNumber = HelperClass.setEmptyIfNull(unitNumber);
+        complexName = HelperClass.setEmptyIfNull(complexName);
+        HelperClass.validatePostalCode(postalCode);
 
     private static String getFieldName()
     {
@@ -72,4 +75,4 @@ public class AddressFactory {
         }
         return "";
     }
-}
+} 
