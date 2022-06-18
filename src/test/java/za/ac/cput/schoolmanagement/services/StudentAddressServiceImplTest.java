@@ -1,4 +1,4 @@
-package za.ac.cput.schoolmanagement.services.StudentService;
+package za.ac.cput.schoolmanagement.services;
 /*
  School_Management
  StudentAddressServiceImplTest

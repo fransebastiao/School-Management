@@ -5,75 +5,108 @@ package za.ac.cput.schoolmanagement.controller;
  Author: Edvalter da Costa Jamba (220446571)
  Date: 17 June 2022
 */
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.schoolmanagement.domain.Name;
-import za.ac.cput.schoolmanagement.domain.Student;
-import za.ac.cput.schoolmanagement.factory.NameFactory;
-import za.ac.cput.schoolmanagement.factory.StudentFactory;
-
+import za.ac.cput.schoolmanagement.domain.*;
+import za.ac.cput.schoolmanagement.factory.*;
+import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Author: Ameer Ismail
+student nr: 218216033
+ControllerTest: Student Controller testing
+ADP3 June assessment Group 1
+ */
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class StudentControllerTest {
-
-
-
+class StudentControllerTest
+{
     @LocalServerPort
-    private int port;
+    private int p;
 
     @Autowired
-    private StudentController controller;
-    @Autowired private TestRestTemplate restTemplate;
-    private Student student;
+    private StudentController control;
+    @Autowired
+    private TestRestTemplate restTemplate;
+
     private Name name;
-    private String baseUrl;
+    private Student student;
+    private String Url;
+
 
     @BeforeEach
-    void setUp() {
-        assertNotNull(controller);
-        this.name = NameFactory.build("Edvalter", "Costa","Jamba");
-        this.student = StudentFactory.createStudent("220446571","220446571@mycpur.ac.za",name);
-        this.baseUrl = "http://localhost:" + this.port + "/schoolmanagement/employee/";
+    void setUp()
+    {
+        assertNotNull(control);
+        this.name = NameFactory.build("Edvalter", "da Costa", "Jamba");
+        this.student = StudentFactory.build("edvalter33", "edvalter@gmail.com", name);
+        this.Url = "http://localhost:" + this.p + "/school-management/student/";
     }
 
+    @Order(1)
     @Test
-    void A_save() {
-        String url = baseUrl + "save";
+        //save
+    void save()
+    {
+        String url = Url + "save";
         System.out.println(url);
+
         ResponseEntity<Student> response = this.restTemplate
                 .postForEntity(url, this.student, Student.class);
         System.out.println(response);
-        assertAll(() -> assertEquals(HttpStatus.OK,response.getStatusCode()),() -> assertNotNull(response.getBody())
-        );
 
+        assertAll
+                (
+                        () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
+                        () -> assertNotNull(response.getBody())
+                );
     }
 
+    @Order(2)
     @Test
-    void B_delete() {
-        String url = baseUrl + "delete/" + this.student.getStudentid();
+        //reading
+    void read()
+    {
+        String url = Url + "delete" + this.student.getStudentId();
         System.out.println(url);
         this.restTemplate.delete(url);
-
     }
 
+    @Order(3)
     @Test
-    void C_read() {
-        String url = baseUrl + "read/" + this.student.getStudentid();
+        // finding
+    void findAll()
+    {
+        String url = Url + "findAll";
         System.out.println(url);
-        ResponseEntity<Student> response = this.restTemplate.getForEntity(url, Student.class);
-        System.out.println(response);
-        assertAll(()-> assertEquals(HttpStatus.OK, response.getStatusCode()),()-> assertNotNull(response.getBody())
-        );
+
+        ResponseEntity<Student[]> response = this.restTemplate.getForEntity(url, Student[].class);
+        System.out.println(Arrays.asList(response.getBody()));
+
+        assertAll
+                (
+                        () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
+                        () -> assertEquals(1, response.getBody().length)
+                );
     }
+
+    @Order(4)
+    @Test
+        // deleting
+    void delete()
+    {
+        String url = Url + "delete" + this.student.getStudentId();
+        System.out.println(url);
+        this.restTemplate.delete(url);
+    }
+
 }

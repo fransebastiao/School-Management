@@ -4,19 +4,15 @@ import za.ac.cput.schoolmanagement.domain.City;
 import za.ac.cput.schoolmanagement.domain.Country;
 import za.ac.cput.schoolmanagement.helper.HelperClass;
 
-public class  CityFactory {
+public class CityFactory {
 
-    public static City build (String cityId, String cityName, Country country ){
-        HelperClass.checkStringParam("City ID", cityId);
-        HelperClass.checkStringParam("city Name", cityName);
-        HelperClass.checkIfObjectNull("address", country);
-
-        return new City.Builder().cityId(cityId).cityName(cityName).Country(country).build();
-    }
-    public static City.city buildId(City city) {
-        return new City.city(
-                city.getCityId(),
-                city.getCityName(),
-                city.getCountry());
+    public static City build(String  id, String name, Country country)throws IllegalArgumentException{
+        HelperClass.checkStringParam("id",id);
+        HelperClass.checkStringParam("name",name);
+        HelperClass.checkIfObjectNull("Country",country);
+        return new City.Builder().setId(id)
+                .setName(name)
+                .setCountry(country)
+                .build();
     }
 }
