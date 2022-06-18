@@ -1,18 +1,29 @@
 /* Entity: EMPLOYEEADDRESS
-*  DDD Pattern
-* SCHOOL-MANAGEMENT
-*Author: TSHEPANG MOLEFE 216217717
-*  Date: 12-06-2022
-*/
+ *  DDD Pattern
+ * SCHOOL-MANAGEMENT
+ *Author: TSHEPANG MOLEFE 216217717
+ *  Date: 12-06-2022
+ */
 
 package za.ac.cput.schoolmanagement.domain;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
-
+@Entity
 public class EmployeeAddress
 {
-    private final String staffId;
-    private  final Address address;
+    @Id
+    @NotNull
+    private  String staffId;
+    @NotNull
+    @Embedded
+    private   Address address;
+
+    protected EmployeeAddress()
+    {}
 
     private EmployeeAddress(Builder builder)
     {

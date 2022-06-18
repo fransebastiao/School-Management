@@ -19,6 +19,7 @@ public class AddressFactory {
         HelperClass.checkIfObjectNull("city", city);
         unitNumber = HelperClass.setEmptyIfNull(unitNumber);
         complexName = HelperClass.setEmptyIfNull(complexName);
+        HelperClass.validatePostalCode(postalCode);
 
         return new Address.Builder().unitNumber(unitNumber).complexName(complexName).streetNumber(streetNumber).
                 streetName(streetName).postalCode(postalCode).city(city).build();
