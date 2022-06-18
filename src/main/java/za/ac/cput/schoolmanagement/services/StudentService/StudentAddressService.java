@@ -8,7 +8,8 @@ package za.ac.cput.schoolmanagement.services.StudentService;
 import za.ac.cput.schoolmanagement.domain.StudentAddress;
 import za.ac.cput.schoolmanagement.services.IService;
 
-public interface StudentAddressService extends IService<StudentAddress,String>
-{
+public interface StudentAddressService extends IService<StudentAddress, String> {
+        void deleteById(String id);
+
         void deleteUsingId(String id);
 }

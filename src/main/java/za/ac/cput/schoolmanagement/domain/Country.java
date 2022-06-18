@@ -5,23 +5,21 @@ This class implement builder pattern for Country
 Siphelele Nyathi 218334028
 10.06.2022
  */
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
-@Embeddable
 public class Country {
+    @Id
+    private  String countryId;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull @Id private String countryId;
-    @NotNull private String countryName;
+    private  String countryName;
 
+    protected Country()
+    {}
 
-    protected Country() {
-    }
-
-    public Country(Builder builder) {
+    private Country(Builder builder) {
         this.countryId = builder.countryId;
         this.countryName = builder.countryName;
     }
@@ -30,31 +28,25 @@ public class Country {
         return countryId;
     }
 
-    public void setCountryId(String countryId) {
-        this.countryId = countryId;
-    }
-
     public String getCountryName() {
         return countryName;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
-
     @Override
     public String toString() {
-        return "Country{" +
-                " ID ='" + countryId + '\'' +
-                ", Name ='" + countryName + '\'' +
-                '}';
+        return "country{" +
+                "countryId='" + countryId + '\'' +
+                ", countryName='" + countryName + '\'' + '}';
+
     }
 
-    public static class Builder{
+    /**public Object equalsIgnoreCase(Object country) {
+     }**/
+
+    public static class Builder {
 
         private String countryId;
         private String countryName;
-
 
         public Builder setCountryId(String countryId) {
             this.countryId = countryId;
@@ -66,15 +58,31 @@ public class Country {
             return this;
         }
 
-        public Builder copy(Country country){
+        public Builder copy(Country country) {
             this.countryId = country.countryId;
             this.countryName = country.countryName;
             return this;
         }
 
-        public Country build(){
+        public Country build() {
             return new Country(this);
         }
     }
-}
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country that = (Country) o;
+        return countryId.equals(that.countryId) &&
+                countryName.equals(that.countryName);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(countryId, countryName);
+    }
+
+}
