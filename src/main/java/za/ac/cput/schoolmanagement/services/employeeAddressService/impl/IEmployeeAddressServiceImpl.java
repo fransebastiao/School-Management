@@ -10,19 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.schoolmanagement.domain.EmployeeAddress;
 import za.ac.cput.schoolmanagement.repository.EmployeeAddressRepository;
-import za.ac.cput.schoolmanagement.services.employeeAddressService.EmployeeAddressService;
+import za.ac.cput.schoolmanagement.services.employeeAddressService.IEmployeeAddressService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 
-public class EmployeeAddressServiceImpl implements EmployeeAddressService
+public class IEmployeeAddressServiceImpl implements IEmployeeAddressService
 {
     private final EmployeeAddressRepository repository;
 
     @Autowired
-    public EmployeeAddressServiceImpl(EmployeeAddressRepository repository)
+    public IEmployeeAddressServiceImpl(EmployeeAddressRepository repository)
     {
         this.repository = repository;
     }

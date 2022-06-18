@@ -12,7 +12,7 @@ import za.ac.cput.schoolmanagement.services.IService;
 
 import java.util.List;
 
-public interface EmployeeAddressService extends IService<EmployeeAddress, String>
+public interface IEmployeeAddressService extends IService<EmployeeAddress, String>
 {
     List<EmployeeAddress> findAll();
     void deleteById(String id);

@@ -48,7 +48,7 @@ class AddressFactoryTest {
                 city
         ));
     }
-
+    /*
     @Test
     @Order(1)
     public void buildWithEmpty() {
@@ -74,5 +74,5 @@ class AddressFactoryTest {
                 "Ellen avenue", 6, city);
         System.out.println(address);
         assertNotNull(address);
-    }
+    }*/
 }

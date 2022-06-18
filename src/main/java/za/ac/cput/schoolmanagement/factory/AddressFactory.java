@@ -31,7 +31,7 @@ public class AddressFactory {
         HelperClass.checkStringParam("streetNumber", streetNumber);
         HelperClass.checkStringParam("streetName", streetName);
         HelperClass.checkStringParam("postalCode", postalCode);
-        validatePostalCode(postalCode);
+        //validatePostalCode(postalCode);
         HelperClass.checkIfObjectNull("city", city);
     }
 
@@ -59,9 +59,9 @@ public class AddressFactory {
         if(count > 0)
             throw new IllegalArgumentException("Invalid postal code, " + "'" + getFieldName() + "'" + " contains: " + count + " invalid characters");
     }
-        unitNumber = HelperClass.setEmptyIfNull(unitNumber);
+        /*unitNumber = HelperClass.setEmptyIfNull(unitNumber);
         complexName = HelperClass.setEmptyIfNull(complexName);
-        HelperClass.validatePostalCode(postalCode);
+        HelperClass.validatePostalCode(postalCode);*/
 
     private static String getFieldName()
     {

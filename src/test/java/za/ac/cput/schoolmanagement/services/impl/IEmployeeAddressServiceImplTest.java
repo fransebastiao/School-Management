@@ -18,7 +18,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EmployeeAddressServiceImplTest
+class IEmployeeAddressServiceImplTest
 {
     Address khayelitsha;
     private final EmployeeAddress employeeAddress = EmployeeAddressFactory.build("1791479", khayelitsha);

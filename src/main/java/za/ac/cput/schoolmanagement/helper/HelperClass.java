@@ -29,11 +29,11 @@ public class HelperClass {
         }
     }
 
-    public static int validatePostalCode(int postalCode){
+    /*public static int validatePostalCode(int postalCode){
         if(postalCode > 999 && postalCode < 10000) {
             return postalCode;
         }
         throw new IllegalArgumentException("Insert a number from 1000 to 9999");
-    }
+    }*/
 
 }
