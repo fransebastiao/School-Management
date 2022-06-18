@@ -50,4 +50,9 @@ public class StudentServiceImpl implements StudentService {
             delete(student.get());
         }
     }
+
+    @Override
+    public void deleteById(String studentId) {
+
+    }
 }

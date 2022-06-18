@@ -1,6 +1,7 @@
-package za.ac.cput.schoolmanagement.services;
+package za.ac.cput.schoolmanagement.services.cityService;
 
 import za.ac.cput.schoolmanagement.domain.City;
+import za.ac.cput.schoolmanagement.domain.Country;
 import za.ac.cput.schoolmanagement.services.IService;
 
 import java.util.List;
@@ -12,5 +13,5 @@ public interface CityService extends IService <City, String > {
     List<City> findAll();
 
 
-
+    List<City> findCitiesByCountry(Country country);
 }

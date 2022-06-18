@@ -21,7 +21,7 @@ public class Address {
     @NotBlank(message = "Unit Number is mandatory")
     private String unitNumber;
 
-    @NotBlank(message = "Complex is mandatory") //Not everyone stays in a complex.
+    @NotBlank(message = "Complex is mandatory")
     private String complexName;
 
     @NotBlank(message = "Street Number is mandatory")

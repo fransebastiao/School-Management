@@ -8,18 +8,12 @@ package za.ac.cput.schoolmanagement.factory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.schoolmanagement.domain.Address;
 import za.ac.cput.schoolmanagement.domain.City;
 import za.ac.cput.schoolmanagement.domain.Country;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class AddressFactoryTest {
 
     @BeforeEach
@@ -48,31 +42,5 @@ class AddressFactoryTest {
                 city
         ));
     }
-    /*
-    @Test
-    @Order(1)
-    public void buildWithEmpty() {
-        Address address = AddressFactory.build("", "", "15",
-                "Ellen avenue", 1000, city);
-        System.out.println(address);
-        assertNotNull(address);
-    }
 
-    @Test
-    @Order(2)
-    public void buildWithNull() {
-        Address address = AddressFactory.build(null, null, "15",
-                "Ellen avenue", 1000, city);
-        System.out.println(address);
-        assertNotNull(address);
-    }
-
-    @Test
-    @Order(3)
-    public void buildInvalidPostalCode() {
-        Address address = AddressFactory.build("928", "Alfred Johnson", "15",
-                "Ellen avenue", 6, city);
-        System.out.println(address);
-        assertNotNull(address);
-    }*/
 }

@@ -1,4 +1,4 @@
-package za.ac.cput.schoolmanagement.services.countryService;
+package za.ac.cput.schoolmanagement.services;
 /*
 CountryServiceImplTest.java
 JUnit tests  for Country Services Implementation

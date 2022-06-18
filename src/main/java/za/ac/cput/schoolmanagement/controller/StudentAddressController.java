@@ -1,7 +1,7 @@
 package za.ac.cput.schoolmanagement.controller;
 /*
  School_Management
- StudentAddressComtroller
+ StudentAddressController
  Author: Edvalter da Costa Jamba (220446571)
  Date: 17 June 2022
 */

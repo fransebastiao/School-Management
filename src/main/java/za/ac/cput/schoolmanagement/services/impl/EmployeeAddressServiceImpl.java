@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.schoolmanagement.domain.EmployeeAddress;
 import za.ac.cput.schoolmanagement.repository.EmployeeAddressRepository;
-import za.ac.cput.schoolmanagement.services.IEmployeeAddressService;
 
 import java.util.List;
 import java.util.Optional;

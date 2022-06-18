@@ -6,101 +6,117 @@ package za.ac.cput.schoolmanagement.domain;
  Date: 11 June 2022
 */
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+
 @Entity
-public class Student implements Serializable
+public class Student
 {
+    @NotNull
+    @Id private String studentId;
 
-    @Id
-    private static String studentid;
-    private  String studentemail;
-    @Embedded
-    private  Name studentname;
+    @NotNull private String email;
 
+    @NotNull
+    @Embedded private Name name;
 
-    public Student(){}
+    {}
 
-    public Student(Builder builder)
+    protected Student(){
+
+    }
+
+    //pattern
+    private Student(Builder builder)
     {
-        this.studentid = builder.studentid;
-        this.studentemail=builder.studentemail;
-        this.studentname = builder.studentname;
+        this.studentId = builder.studentId;
+        this.email = builder.email;
+        this.name = builder.name;
     }
 
-    public  String getStudentid() {
-        return studentid;
+    //getters
+    public String getStudentId() {
+        return studentId;
     }
 
-    public String getStudentemail() {
-        return studentemail;
+    public String getEmail() {
+        return email;
     }
 
-    public Name getStudentname() {
-        return studentname;
+
+    public Name getName()
+    {
+        return name;
     }
 
-    public static class Builder{
 
-        private String studentid,studentemail;
-        private Name studentname;
-
-        public Builder studentid(String studentid) {
-            this.studentid = studentid;
-            return this;
-        }
-
-        public Builder studentemail(String studentemail) {
-            this.studentemail = studentemail;
-            return this;
-        }
-
-        public Builder studentname(Name studentname) {
-            this.studentname = studentname;
-            return this;
-        }
-
-        public Builder copy(Student student) {
-            this.studentid = student.studentid;
-            this.studentemail=student.studentemail;
-            this.studentname = student.studentname;
-
-            return this;
-        }
-
-        public Student build() {
-            return new Student(this);
-        }
-    }
 
     @Override
     public String toString() {
         return "Student{" +
-                "studentid='" + studentid + '\'' +
-                ", studentemail='" + studentemail + '\'' +
-                ", studentname='" + studentname + '\'' +
+                "student Id ='" + studentId + '\'' +
+                ", email ='" + email + '\'' +
+                ", name =" + name +
                 '}';
     }
 
-
     @Override
-    public boolean equals(Object s) {
-        if(this==s )return true;
-        if(s==null || getClass() != s.getClass())return false;
-        Student that=(Student) s;
-        return studentid.equals(that.studentid) && studentemail.equals(that.studentemail)
-                && studentname.equals(that.studentname);
+    public boolean equals(Object s)
+    {
+        if (this == s)
+            return true;
+        if (s == null || getClass() != s.getClass())
+            return false;
+        Student stud = (Student) s;
+        return studentId.equals(stud.studentId) && email.equals(stud.email) && name.equals(stud.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(studentid, studentemail, studentname);
+        return Objects.hash(studentId, email, name);
     }
 
+    // builder class
+    public static class Builder
+    {
+        private String studentId;
+        private String email;
+        private Name name;
 
+
+        // builder setters
+        public Builder setStudentId(String studentId)
+        {
+            this.studentId = studentId;
+            return this;
+        }
+
+        public Builder setEmail(String email)
+        {
+            this.email = email;
+            return this;
+        }
+
+        public Builder setName(Name name)
+        {
+            this.name = name;
+            return this;
+        }
+
+        public Builder copy(Student student)
+        {
+            this.studentId = student.studentId;
+            this.email = student.email;
+            this.name = student.name;
+            return this;
+        }
+
+        public Student build()
+        {
+            return new Student(this);
+        }
+
+    }
 }
-
