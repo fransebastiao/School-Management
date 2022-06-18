@@ -19,6 +19,7 @@ public class StudentAddressServiceImpl implements StudentAddressService{
 
     private final StudentAddressRepository repository;
 
+    @Autowired
     public StudentAddressServiceImpl(StudentAddressRepository repository) {
         this.repository = repository;
     }
