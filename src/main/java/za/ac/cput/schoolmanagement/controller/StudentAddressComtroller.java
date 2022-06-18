@@ -5,6 +5,7 @@ package za.ac.cput.schoolmanagement.controller;
  Author: Edvalter da Costa Jamba (220446571)
  Date: 17 June 2022
 */
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class StudentAddressComtroller {
 
     private final StudentAddressService service;
 
+    @Autowired
     public StudentAddressComtroller(StudentAddressService service) {
         this.service = service;
     }
