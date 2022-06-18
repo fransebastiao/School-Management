@@ -10,7 +10,5 @@ import za.ac.cput.schoolmanagement.domain.Student;
 import za.ac.cput.schoolmanagement.services.IService;
 
 public interface StudentService extends IService<Student, String> {
-    void deleteUsingId(String id);
-
-    void deleteById(String studentId);
+    void deleteById(String id);
 }

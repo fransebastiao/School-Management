@@ -36,7 +36,7 @@ public class StudentController {
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id){
-        this.service.deleteUsingId(id);
+        this.service.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 

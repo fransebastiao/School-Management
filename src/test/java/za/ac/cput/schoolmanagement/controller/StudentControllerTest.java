@@ -18,14 +18,6 @@ import za.ac.cput.schoolmanagement.factory.*;
 import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
-Author: Ameer Ismail
-student nr: 218216033
-ControllerTest: Student Controller testing
-ADP3 June assessment Group 1
- */
-
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudentControllerTest

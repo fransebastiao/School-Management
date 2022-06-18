@@ -43,16 +43,11 @@ public class StudentServiceImpl implements StudentService {
         return this.repository.findAll();
     }
 
-    public void deleteUsingId(String id) {
+    public void deleteById(String id) {
         repository.deleteById(id);
         Optional<Student> student = read(id);
         if (student.isPresent()) {
             delete(student.get());
         }
-    }
-
-    @Override
-    public void deleteById(String studentId) {
-
     }
 }
