@@ -6,6 +6,7 @@ package za.ac.cput.schoolmanagement.services.StudentService;
  Date: 16 June 2022
 */
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.schoolmanagement.domain.StudentAddress;
 import za.ac.cput.schoolmanagement.repository.StudentAddressRepository;
@@ -19,6 +20,7 @@ public class StudentAddressServiceImpl implements StudentAddressService{
 
     private final StudentAddressRepository repository;
 
+    @Autowired
     public StudentAddressServiceImpl(StudentAddressRepository repository) {
         this.repository = repository;
     }
