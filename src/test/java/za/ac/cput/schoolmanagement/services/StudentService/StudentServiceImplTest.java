@@ -10,13 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.schoolmanagement.domain.Employee;
 import za.ac.cput.schoolmanagement.domain.Name;
 import za.ac.cput.schoolmanagement.domain.Student;
-import za.ac.cput.schoolmanagement.factory.EmployeeFactory;
 import za.ac.cput.schoolmanagement.factory.NameFactory;
 import za.ac.cput.schoolmanagement.factory.StudentFactory;
-import za.ac.cput.schoolmanagement.services.employeeService.IEmployeeService;
+
 
 import java.util.List;
 import java.util.Optional;
